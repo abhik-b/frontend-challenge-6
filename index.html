@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <img class="top" src="./images/bg-pattern-top.svg" alt="top-image" />
-    <img class="bottom" src="./images/bg-pattern-bottom.svg" alt="top-image" />
     <div class="card">
       <div class="card__top">
         <div class="card__profile">
@@ -53,9 +51,31 @@
     </div>
     <div class="attribution">
       Coded by
-      <a href="https://www.frontendmentor.io/profile/abhik-b"
+      <a target="_blank" href="https://www.frontendmentor.io/profile/abhik-b"
         >Abhik Bhattacharya</a
       >
     </div>
+    <script>
+      document.querySelector(".card").addEventListener("mousemove", (e) => {
+        const xDeg = (window.innerWidth / 2 - e.pageX) / 10;
+        const yDeg = (window.innerHeight / 2 - e.pageY) / 10;
+        document.querySelector(
+          ".card"
+        ).style.transform = `translate(-50%,-50%) rotateX(${xDeg}deg) rotateY(${yDeg}deg)`;
+        document
+          .querySelector(".card__profile")
+          .classList.add("card__profile_active");
+      });
+
+      document.querySelector(".card").addEventListener("mouseleave", (e) => {
+        document.querySelector(
+          ".card"
+        ).style.transform = `translate(-50%,-50%) rotateX(0deg) rotateY(0deg)`;
+
+        document
+          .querySelector(".card__profile")
+          .classList.remove("card__profile_active");
+      });
+    </script>
   </body>
 </html>
